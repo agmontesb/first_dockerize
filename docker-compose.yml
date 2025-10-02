@@ -1,0 +1,13 @@
+services:
+  worksheetui:
+    image: agmontesb/worksheetui:v2
+    environment: 
+      # Passes the DISPLAY environment variable from your active WSL session directly into the container. 
+      # This is the critical step for X11 forwarding.
+      - DISPLAY=${DISPLAY} 
+    volumes:
+      # Mounts the X11 socket as a volume, which allows the container to communicate with the X server on 
+      # your Windows host.
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    working_dir: /app
+    command: ["python", "worksheetui.py"]
