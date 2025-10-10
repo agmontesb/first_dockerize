@@ -2,8 +2,11 @@ import ast
 import re
 import sys
 import traceback
+import platform
 import tkinter as tk
 
+
+system = platform.system()
 
 class Frontend(tk.Frame):
     def __init__(self, *args, context = None, **kwargs):
@@ -416,7 +419,7 @@ class Frontend(tk.Frame):
 def main():
     app = tk.Tk()
     app.title("My App")
-    app.state('zoomed')
+    app.state('zoomed') if system == 'Windows' else app.attributes('-fullscreen', True)
     fend = Frontend(app)
     fend.pack(side="top", fill="both", expand=True)
 
