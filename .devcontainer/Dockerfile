@@ -3,14 +3,12 @@ FROM python:3.11-slim-bookworm
 
 # The installer requires curl (and certificates) to download the release archive
 RUN apt-get update && apt-get install -y \
-    # libxext6 \
-    # libxrender1 \
-    # libxtst6 \
-    # libxi6 \
+    libxext6 \
+    libxrender1 \
+    libxtst6 \
+    libxi6 \
     git \
     tk \
-    # curl \
-    # ca-certificates \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
